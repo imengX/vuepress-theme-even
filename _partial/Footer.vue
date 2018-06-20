@@ -6,7 +6,7 @@
       </span>
       <span class="division">|</span>
       <span class="theme-info">
-        {{ theme }} -
+        {{ footer.theme }} -
         <a class="theme-link" href="https://github.com/imengX/vuepress-theme-even">Even</a>
       </span>
 
@@ -16,28 +16,22 @@
         <span class="heart">
           <i class="iconfont icon-heart"></i>
         </span>
-        <span class="author">{{ author }}</span>
+        <span class="author">{{ footer.author }}</span>
       </span>
     </div>
   </footer>
 </template>
 <script>
 export default {
+  props: {
+    footer: Object
+  },
   computed: {
     powerby() {
-      return this.powered.replace(
+      return this.footer.powered.replace(
         '%s',
         " <a class='hexo-link' href='https://vuepress.vuejs.org/'>VuePress</a> "
       )
-    },
-    powered() {
-      return '由 %s 强力驱动'
-    },
-    theme() {
-      return '主题'
-    },
-    author() {
-      return '原文作者'
     }
   }
 }

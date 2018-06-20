@@ -1,8 +1,8 @@
 <template>
   <div>
-    <Slideout v-bind:theme="theme.menu"></Slideout>
+    <Slideout v-bind:menu="theme.menu"></Slideout>
     <div class="container" id="mobile-panel">
-      <Header v-bind:theme="theme.menu"></Header>
+      <Header v-bind:menu="theme.menu"></Header>
       <main id="main" class="main">
         <div class="content-wrapper">
           <div id="content" class="content">
@@ -11,7 +11,7 @@
           <!-- {% include '_partial/comments.swig' %} -->
         </div>
       </main>
-      <Footer v-bind:theme="theme"></Footer>
+      <Footer v-bind:footer="theme.footer"></Footer>
     </div>
   </div>
 </template>
