@@ -1,14 +1,31 @@
 <template>
   <div>
-    <Header></Header>
-    
-    <!-- <Content/> -->
+    <Slideout v-bind:theme="theme.menu"></Slideout>
+    <div class="container" id="mobile-panel">
+      <Header v-bind:theme="theme.menu"></Header>
+      <main id="main" class="main">
+        <div class="content-wrapper">
+          <div id="content" class="content">
+            <Content/>
+          </div>
+          <!-- {% include '_partial/comments.swig' %} -->
+        </div>
+      </main>
+      <Footer v-bind:theme="theme"></Footer>
+    </div>
   </div>
 </template>
  <script>
 import Header from './_partial/Header.vue'
+import Slideout from './_partial/Slideout.vue'
+import Footer from './_partial/Footer.vue'
 
 export default {
-  components: { Header }
+  components: { Header, Slideout, Footer },
+  computed: {
+    theme() {
+      return this.$site.themeConfig
+    }
+  }
 }
 </script>
