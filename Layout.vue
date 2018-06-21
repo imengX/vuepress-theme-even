@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Slideout v-bind:menu="theme.menu"></Slideout>
+    <SlideoutT v-bind:menu="theme.menu"></SlideoutT>
     <div class="container" id="mobile-panel">
       <Header v-bind:menu="theme.menu"></Header>
       <main id="main" class="main">
@@ -19,12 +19,18 @@
   </div>
 </template>
  <script>
+import $ from "jquery";
+import Slideout from 'slideout'
+// import fancybox from 'fancybox'
+import pjax from 'pjax'
+import NProgress from 'nprogress'
+
 import Header from './_partial/Header.vue'
-import Slideout from './_partial/Slideout.vue'
+import SlideoutT from './_partial/Slideout.vue'
 import Footer from './_partial/Footer.vue'
 
 export default {
-  components: { Header, Slideout, Footer },
+  components: { Header, SlideoutT, Footer },
   computed: {
     theme() {
       return this.$site.themeConfig
