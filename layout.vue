@@ -12,6 +12,9 @@
         </div>
       </main>
       <Footer v-bind:footer="theme.footer"></Footer>
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
     </div>
   </div>
 </template>

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div id="mobile-navbar" class="mobile-navbar">
+    <header id="mobile-navbar" class="mobile-navbar">
       <div class="mobile-header-logo">
         <a :href="$localePath" class="logo">{{ $siteTitle }}</a>
       </div>
@@ -9,7 +9,7 @@
         <span></span>
         <span></span>
       </div>
-    </div>
+    </header>
     <nav id="mobile-menu" class="mobile-menu slideout-menu">
       <a :href="key" v-for="(val, key) in menu">
         <li class="mobile-menu-item">
