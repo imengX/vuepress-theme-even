@@ -6,17 +6,16 @@
       </span>
       <span class="division">|</span>
       <span class="theme-info">
-        {{ footer.theme }} -
+        {{ theme.footer.theme }} -
         <a class="theme-link" href="https://github.com/imengX/vuepress-theme-even">Even</a>
       </span>
 
       <span class="copyright-year">
-        <!-- {% set current = date(Date.now(), "YYYY") %} &copy; {% if theme.since and theme.since != current %} {{ theme.since }} - {% endif %} {{ current }} -->
-
+        {{copyrightYear}}
         <span class="heart">
           <i class="iconfont icon-heart"></i>
         </span>
-        <span class="author">{{ footer.author }}</span>
+        <span class="author">{{ theme.copyright.author }}</span>
       </span>
     </div>
   </footer>
@@ -24,14 +23,24 @@
 <script>
 export default {
   props: {
-    footer: Object
+    theme: Object
   },
   computed: {
     powerby() {
-      return this.footer.powered.replace(
+      return this.theme.footer.powered.replace(
         '%s',
         " <a class='hexo-link' href='https://vuepress.vuejs.org/'>VuePress</a> "
       )
+    },
+    copyrightYear() {
+      var now = (new Date()).getFullYear();
+      var temp = ''
+      var theme = this.theme;
+      if (theme.since && (theme.since != now)) {
+        temp = theme.since + ' - '
+      }
+      temp += now
+      return temp
     }
   }
 }

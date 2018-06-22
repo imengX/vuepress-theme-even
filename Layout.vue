@@ -11,7 +11,7 @@
           <!-- {% include '_partial/comments.swig' %} -->
         </div>
       </main>
-      <Footer v-bind:footer="theme.footer"></Footer>
+      <Footer v-bind:theme="theme"></Footer>
       <div class="back-to-top" id="back-to-top">
         <i class="iconfont icon-up"></i>
       </div>

@@ -1,6 +1,8 @@
 <template>
-  <header class="logo-wrapper">
-    <a :href="$localePath">{{ $siteTitle }}</a>
+  <header id="header" class="header">
+    <div class="logo-wrapper">
+      <a :href="$localePath" class="logo">{{ $siteTitle }}</a>
+    </div>
     <nav class="site-navbar">
       <ul id="menu" class="menu" v-if="menu">
         <!-- {% for name, path in theme.menu %} -->
@@ -27,13 +29,3 @@ export default {
   // }
 }
 </script>
-<style lang="stylus" scoped>
-.logo-wrapper {
-  float: left;
-
-  .logo {
-    font-size: $logo-font-size;
-    font-family: $logo-font-family;
-  }
-}
-</style>
