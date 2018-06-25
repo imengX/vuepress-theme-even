@@ -6,7 +6,14 @@
       <main id="main" class="main">
         <div class="content-wrapper">
           <div id="content" class="content">
-            <Content/>
+            <div class="custom-layout" v-if="$page.frontmatter.layout">
+              <component :is="$page.frontmatter.layout"/>
+            </div>
+            <Home v-else-if="$page.frontmatter.home"/>
+            <Page v-else >
+              <slot name="page-top" slot="top"/>
+              <slot name="page-bottom" slot="bottom"/>
+            </Page>          
           </div>
           <!-- {% include '_partial/comments.swig' %} -->
         </div>
@@ -28,9 +35,13 @@ import NProgress from 'nprogress'
 import Header from './_partial/Header.vue'
 import SlideoutT from './_partial/Slideout.vue'
 import Footer from './_partial/Footer.vue'
+import Home from './Home.vue'
+import Page from './Page.vue'
 
 export default {
-  components: { Header, SlideoutT, Footer },
+  components: { 
+    Header, SlideoutT, Footer, Home, Page,
+  },
   computed: {
     theme() {
       return this.$site.themeConfig
