@@ -7,13 +7,13 @@
         <div class="content-wrapper">
           <div id="content" class="content">
             <div class="custom-layout" v-if="$page.frontmatter.layout">
-              <component :is="$page.frontmatter.layout"/>
+              <component :is="$page.frontmatter.layout" />
             </div>
-            <Home v-else-if="$page.frontmatter.home"/>
-            <Page v-else >
-              <slot name="page-top" slot="top"/>
-              <slot name="page-bottom" slot="bottom"/>
-            </Page>          
+            <Home v-else-if="$page.frontmatter.home" />
+            <Page v-else>
+              <slot name="page-top" slot="top" />
+              <slot name="page-bottom" slot="bottom" />
+            </Page>
           </div>
           <!-- {% include '_partial/comments.swig' %} -->
         </div>
@@ -26,7 +26,7 @@
   </div>
 </template>
  <script>
-import $ from "jquery";
+import $ from 'jquery'
 import Slideout from 'slideout'
 // import fancybox from 'fancybox'
 import pjax from 'pjax'
@@ -37,15 +37,36 @@ import SlideoutT from './_partial/Slideout.vue'
 import Footer from './_partial/Footer.vue'
 import Home from './Home.vue'
 import Page from './Page.vue'
+import util from './util'
 
 export default {
-  components: { 
-    Header, SlideoutT, Footer, Home, Page,
+  components: {
+    Header,
+    SlideoutT,
+    Footer,
+    Home,
+    Page
   },
   computed: {
     theme() {
       return this.$site.themeConfig
     }
+  },
+  mounted() {
+    // Vue.prototype['$categories'] = this.$generateCates()
+    // window.addEventListener('scroll', this.onScroll)
+    // // configure progress bar
+    // nprogress.configure({ showSpinner: true })
+    // this.$router.beforeEach((to, from, next) => {
+    //   if (to.path !== from.path && !Vue.component(to.name)) {
+    //     nprogress.start()
+    //   }
+    //   next()
+    // })
+    // this.$router.afterEach(() => {
+    //   nprogress.done()
+    //   this.isSidebarOpen = false
+    // })
   }
 }
 </script>

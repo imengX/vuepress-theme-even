@@ -33,10 +33,10 @@ export default {
       )
     },
     copyrightYear() {
-      var now = (new Date()).getFullYear();
+      var now = new Date().getFullYear()
       var temp = ''
-      var theme = this.theme;
-      if (theme.since && (theme.since != now)) {
+      var theme = this.theme
+      if (theme.since && theme.since != now) {
         temp = theme.since + ' - '
       }
       temp += now

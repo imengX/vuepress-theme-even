@@ -34,12 +34,12 @@ import { resolvePage, normalize, outboundRE, endingSlashRE } from './util'
 export default {
   props: ['sidebarItems'],
   computed: {
-    lastUpdated () {
+    lastUpdated() {
       if (this.$page.lastUpdated) {
         return new Date(this.$page.lastUpdated).toLocaleString(this.$lang)
       }
     },
-    lastUpdatedText () {
+    lastUpdatedText() {
       if (typeof this.$themeLocaleConfig.lastUpdated === 'string') {
         return this.$themeLocaleConfig.lastUpdated
       }
@@ -48,7 +48,7 @@ export default {
       }
       return 'Last Updated'
     },
-    prev () {
+    prev() {
       const prev = this.$page.frontmatter.prev
       if (prev === false) {
         return
@@ -58,7 +58,7 @@ export default {
         return resolvePrev(this.$page, this.sidebarItems)
       }
     },
-    next () {
+    next() {
       const next = this.$page.frontmatter.next
       if (next === false) {
         return
@@ -68,7 +68,7 @@ export default {
         return resolveNext(this.$page, this.sidebarItems)
       }
     },
-    editLink () {
+    editLink() {
       if (this.$page.frontmatter.editLink === false) {
         return
       }
@@ -99,7 +99,7 @@ export default {
         )
       }
     },
-    editLinkText () {
+    editLinkText() {
       return (
         this.$themeLocaleConfig.editLinkText ||
         this.$site.themeConfig.editLinkText ||
@@ -109,19 +109,19 @@ export default {
   }
 }
 
-function resolvePrev (page, items) {
+function resolvePrev(page, items) {
   return find(page, items, -1)
 }
 
-function resolveNext (page, items) {
+function resolveNext(page, items) {
   return find(page, items, 1)
 }
 
-function find (page, items, offset) {
+function find(page, items, offset) {
   const res = []
   items.forEach(item => {
     if (item.type === 'group') {
-      res.push(...item.children || [])
+      res.push(...(item.children || []))
     } else {
       res.push(item)
     }

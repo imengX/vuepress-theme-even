@@ -213,3 +213,61 @@ function resolveItem (item, pages, base, isNested) {
     }
   }
 }
+
+// 过滤指定条件的文章
+function documentFilter (filters) {
+  // filters = {path, datetime, category, tag}
+  return this.$site.pages.filter(page => {
+    let path = page.path
+    let datetime = page.frontmatter.datetime ? page.frontmatter.datetime : ''
+    let category = page.frontmatter.category ? page.frontmatter.category : ''
+    let tag = page.frontmatter.tag ? page.frontmatter.tag : ''
+
+    if (filters.path && path) {
+      return path.indexOf(filters.path) > -1
+    }
+    if (filters.datetime && datetime) {
+      return datetime.indexOf(filters.datetime) > -1
+    }
+    if (filters.category && category) {
+      return category.indexOf(filters.category) > -1
+    }
+    if (filters.tag && tag) {
+      return tag.indexOf(filters.tag) > -1
+    }
+  })
+}
+
+function generateCates () {
+  let cates = {}
+  this.$site.pages.forEach(category => {
+    if (category.frontmatter.category) {
+      let cate = category.frontmatter.category
+      if (!cates[cate]) {
+        cates[cate] = []
+        cates[cate].push(category)
+      } else {
+        cates[cate].push(category)
+      }
+    }
+  })
+  return cates
+}
+
+export default {
+  installArr: [{
+    name: '$ensureExt',
+    func: ensureExt
+  }, {
+    name: '$documentFilter',
+    func: documentFilter
+  }, {
+    name: '$generateCates',
+    func: generateCates
+  }],
+  install: function (_Vue) {
+    this.installArr.forEach(item => {
+      _Vue.prototype[item.name] = item.func
+    })
+  }
+}
