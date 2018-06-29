@@ -43,11 +43,6 @@ export default {
       if (category instanceof Array) {
         val = category
       }
-
-      console.log(typeof category)
-
-      console.log(category)
-      console.log(val)
       return val
     }
   }
