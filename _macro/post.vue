@@ -12,14 +12,11 @@
         <span class="post-time">
           {{lastUpdated}}
         </span>
-        <!-- v-if="categories && categories.length" -->
-        <!-- :href="category" -->
-        <div class="post-category">
-          110
-          <div v-for="category in categories">
-            110{{ category }}
-          </div>
-          <a></a>
+
+        <div v-if="categories && categories.length" class="post-category">
+          <a v-for="category in categories" :href="category">
+            {{ category }}
+          </a>
         </div>
       </div>
     </header>
@@ -43,10 +40,14 @@ export default {
       if (typeof category === 'string') {
         val = [category]
       }
-      if (typeof category === 'Array') {
+      if (category instanceof Array) {
         val = category
       }
+
+      console.log(typeof category)
+
       console.log(category)
+      console.log(val)
       return val
     }
   }
